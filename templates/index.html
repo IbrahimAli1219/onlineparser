@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>PDF Uploader and Searcher</title>
+  </head>
+  <body>
+    <h1>Upload PDF</h1>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+      <input type="file" name="pdf_file">
+      <input type="submit" value="Upload">
+    </form>
+    <h1>Search PDF</h1>
+    <form action="{{ url_for('search') }}" method="get">
+      <input type="text" name="keyword">
+      <input type="submit" value="Search">
+    </form>
+    {% if results %}
+      <h1>Search Results</h1>
+      <ul>
+        {% for result in results %}
+          <li>{{ result }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </body>
+</html>
+
+
